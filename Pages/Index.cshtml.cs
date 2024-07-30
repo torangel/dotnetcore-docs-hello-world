@@ -41,9 +41,19 @@ public class IndexModel : PageModel
         {
             Internal = e.ToString();
         }
+
+        try
+        {
+            ExternalIp = await new HttpClient().GetStringAsync("https://ifconfig.me/ip");
+        }
+        catch (Exception e)
+        {
+            this.ExternalIp= e.ToString();
+            
+        }
        
         
     }
 
-    
+    public string ExternalIp { get; set; }
 }
