@@ -8,6 +8,8 @@ public class IndexModel : PageModel
 {
 
     public string OSVersion { get { return RuntimeInformation.OSDescription; }  }
+    public string Dmz { get; set; }
+    public string Internal { get; set; }
     
     private readonly ILogger<IndexModel> _logger;
 
@@ -16,7 +18,32 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
-    {        
+    public async Task OnGet()
+    {
+        try
+        {
+
+        
+        Dmz = await new HttpClient().GetStringAsync(
+            "https://testapp.redbeach-90483548.westeurope.azurecontainerapps.io");
+        }
+        catch (Exception e)
+        {
+            Dmz = e.ToString();
+        }
+
+        try
+        {
+            Internal=Dmz = await new HttpClient().GetStringAsync(
+                "https://testapp1.blackgrass-bff0087b.westeurope.azurecontainerapps.io");
+        }
+        catch (Exception e)
+        {
+            Internal = e.ToString();
+        }
+       
+        
     }
+
+    
 }
