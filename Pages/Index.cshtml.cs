@@ -31,6 +31,18 @@ public class IndexModel : PageModel
         {
             Dmz = e.ToString();
         }
+        
+        try
+        {
+
+        
+            DmzInternal = await new HttpClient().GetStringAsync(
+                "https://testapp.redbeach-90483548.westeurope.azurecontainerapps.io");
+        }
+        catch (Exception e)
+        {
+            DmzInternal = e.ToString();
+        }
 
         try
         {
@@ -54,6 +66,8 @@ public class IndexModel : PageModel
        
         
     }
+
+    public string DmzInternal { get; set; }
 
     public string ExternalIp { get; set; }
 }
