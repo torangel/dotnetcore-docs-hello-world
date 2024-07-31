@@ -37,7 +37,7 @@ public class IndexModel : PageModel
 
         
             DmzInternal = await new HttpClient().GetStringAsync(
-                "https://testapp.redbeach-90483548.westeurope.azurecontainerapps.io");
+                "https://testapp.internal.redbeach-90483548.westeurope.azurecontainerapps.io");
         }
         catch (Exception e)
         {
