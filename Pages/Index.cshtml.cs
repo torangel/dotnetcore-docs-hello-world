@@ -25,7 +25,7 @@ public class IndexModel : PageModel
 
         
         Dmz = await new HttpClient().GetStringAsync(
-            "https://testapp.redbeach-90483548.westeurope.azurecontainerapps.io");
+            "https://cc-services-landing-api-capp.wonderfulocean-541a8359.westeurope.azurecontainerapps.io/healthz");
         }
         catch (Exception e)
         {
@@ -47,7 +47,7 @@ public class IndexModel : PageModel
         try
         {
             Internal= await new HttpClient().GetStringAsync(
-                "https://testapp1.blackgrass-bff0087b.westeurope.azurecontainerapps.io");
+                "https://cc-services-signapi-capp.internal.wonderfulocean-541a8359.westeurope.azurecontainerapps.io/health");
         }
         catch (Exception e)
         {
