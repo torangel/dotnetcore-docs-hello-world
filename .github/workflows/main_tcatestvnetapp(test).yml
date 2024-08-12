@@ -37,7 +37,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'test'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write #This is required for requesting the JWT
@@ -51,15 +51,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F30C4D748A7A4672A90AFD9081435F99 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_DE2AA43C60E0458388071A0D8B8F8F95 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A0FD608B2C97400199694641EBA2942E }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_70B756790DFD42FAA7F9239C3375920A }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_545D6A31C93D482BA84A879EE32083F7 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CE6F6701BD7541718F8564930FD04505 }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'tcatestvnetapp'
-          slot-name: 'Production'
+          slot-name: 'test'
           package: .
           
