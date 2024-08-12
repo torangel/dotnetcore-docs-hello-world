@@ -47,7 +47,7 @@ public class IndexModel : PageModel
         try
         {
             Internal= await new HttpClient().GetStringAsync(
-                "https://cc-services-signapi-capp.internal.wonderfulocean-541a8359.westeurope.azurecontainerapps.io/health");
+                "https://cc-services-trustsign-capp.ambitiousdesert-d59dc7e6.westeurope.azurecontainerapps.io/health");
         }
         catch (Exception e)
         {
